@@ -12,7 +12,6 @@
     --green-light: #e8f0e0;
     --green-pale: #f4f8f0;
     --gold: #b8860b;
-    --gold-light: #d4a843;
     --gold-bg: #fdf8ed;
     --text: #333;
     --text-light: #666;
@@ -22,370 +21,115 @@
     --shadow: 0 2px 12px rgba(0,0,0,0.08);
     --radius: 12px;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'Sarabun', sans-serif;
     background: linear-gradient(135deg, var(--green-pale) 0%, var(--gold-bg) 100%);
-    min-height: 100vh;
-    color: var(--text);
-    padding: 16px;
+    min-height: 100vh; color: var(--text); padding: 16px;
   }
-
-  .container {
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  /* Header */
+  .container { max-width: 480px; margin: 0 auto; }
   .header {
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 24px 20px;
-    text-align: center;
-    margin-bottom: 16px;
-    border-top: 4px solid var(--green-mid);
-    position: relative;
-    overflow: hidden;
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 24px 20px; text-align: center; margin-bottom: 16px;
+    position: relative; overflow: hidden;
   }
-
   .header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--green-mid), var(--gold));
   }
-
   .badge {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--white);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 4px 16px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
+    display: inline-block; background: var(--gold); color: var(--white);
+    font-size: 13px; font-weight: 600; padding: 4px 16px; border-radius: 20px; margin-bottom: 12px;
   }
-
-  .header h1 {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--green-dark);
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-
-  .header .subtitle {
-    font-size: 14px;
-    color: var(--text-light);
-    line-height: 1.6;
-  }
-
-  .header .subtitle strong {
-    color: var(--green-dark);
-  }
-
-  /* Dashboard */
-  .dashboard {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
+  .header h1 { font-size: 20px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; line-height: 1.4; }
+  .header .subtitle { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+  .header .subtitle strong { color: var(--green-dark); }
+  .dashboard { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 16px; }
   .stat-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 16px 8px;
-    text-align: center;
-    transition: transform 0.2s;
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 16px 8px; text-align: center; transition: transform 0.2s;
   }
-
   .stat-card:hover { transform: translateY(-2px); }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--text-light);
-    margin-bottom: 4px;
-    font-weight: 400;
-  }
-
-  .stat-number {
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
+  .stat-label { font-size: 12px; color: var(--text-light); margin-bottom: 4px; }
+  .stat-number { font-size: 36px; font-weight: 700; line-height: 1.1; }
   .stat-card:nth-child(1) .stat-number { color: var(--green-mid); }
   .stat-card:nth-child(2) .stat-number { color: var(--gold); }
   .stat-card:nth-child(3) .stat-number { color: var(--green-dark); }
-
-  /* Progress bar */
   .progress-wrap {
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 16px 20px;
-    margin-bottom: 16px;
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 16px 20px; margin-bottom: 16px;
   }
-
-  .progress-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 13px;
-    color: var(--text-light);
-  }
-
-  .progress-bar {
-    height: 10px;
-    background: var(--green-light);
-    border-radius: 5px;
-    overflow: hidden;
-  }
-
+  .progress-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; color: var(--text-light); }
+  .progress-bar { height: 10px; background: var(--green-light); border-radius: 5px; overflow: hidden; }
   .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--green-mid), var(--gold));
-    border-radius: 5px;
-    transition: width 0.8s ease;
-    width: 0%;
+    height: 100%; background: linear-gradient(90deg, var(--green-mid), var(--gold));
+    border-radius: 5px; transition: width 0.8s ease; width: 0%;
   }
-
-  /* Form */
   .form-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 24px 20px;
-    margin-bottom: 16px;
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 24px 20px; margin-bottom: 16px;
   }
-
-  .form-group {
-    margin-bottom: 18px;
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--green-dark); margin-bottom: 6px; }
+  .form-group select, .form-group input {
+    width: 100%; padding: 12px 14px; border: 2px solid #e0e0e0; border-radius: 8px;
+    font-family: 'Sarabun', sans-serif; font-size: 15px; color: var(--text);
+    background: var(--white); transition: border-color 0.2s;
+    -webkit-appearance: none; appearance: none;
   }
-
-  .form-group label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--green-dark);
-    margin-bottom: 6px;
-  }
-
-  .form-group select,
-  .form-group input {
-    width: 100%;
-    padding: 12px 14px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-family: 'Sarabun', sans-serif;
-    font-size: 15px;
-    color: var(--text);
-    background: var(--white);
-    transition: border-color 0.2s;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
   .form-group select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 36px;
-    cursor: pointer;
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 36px; cursor: pointer;
   }
-
-  .form-group select:focus,
-  .form-group input:focus {
-    outline: none;
-    border-color: var(--green-mid);
-  }
-
+  .form-group select:focus, .form-group input:focus { outline: none; border-color: var(--green-mid); }
   .btn-submit {
-    width: 100%;
-    padding: 14px;
+    width: 100%; padding: 14px;
     background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
-    font-family: 'Sarabun', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.5px;
+    color: var(--white); border: none; border-radius: 8px;
+    font-family: 'Sarabun', sans-serif; font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
   }
-
-  .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
-  .btn-submit:active { transform: translateY(0); }
-  .btn-submit:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  /* Messages */
-  .msg {
-    text-align: center;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 14px;
-    margin-top: 12px;
-    display: none;
-  }
-
-  .msg.success {
-    background: var(--green-light);
-    color: var(--green-dark);
-    display: block;
-  }
-
-  .msg.error {
-    background: var(--red-light);
-    color: var(--red);
-    display: block;
-  }
-
-  .msg.warn {
-    background: var(--gold-bg);
-    color: var(--gold);
-    display: block;
-  }
-
-  /* Closed overlay */
+  .btn-submit:hover { opacity: 0.9; }
+  .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+  .msg { text-align: center; padding: 10px; border-radius: 8px; font-size: 14px; margin-top: 12px; display: none; }
+  .msg.success { background: var(--green-light); color: var(--green-dark); display: block; }
+  .msg.error { background: var(--red-light); color: var(--red); display: block; }
+  .msg.warn { background: var(--gold-bg); color: var(--gold); display: block; }
   .closed-overlay {
-    display: none;
-    background: var(--red-light);
-    border: 2px solid var(--red);
-    border-radius: var(--radius);
-    padding: 24px;
-    text-align: center;
-    margin-bottom: 16px;
+    display: none; background: var(--red-light); border: 2px solid var(--red);
+    border-radius: var(--radius); padding: 24px; text-align: center; margin-bottom: 16px;
   }
-
   .closed-overlay.show { display: block; }
-
-  .closed-overlay .icon {
-    font-size: 40px;
-    margin-bottom: 8px;
-  }
-
-  .closed-overlay h2 {
-    color: var(--red);
-    font-size: 18px;
-    margin-bottom: 4px;
-  }
-
-  .closed-overlay p {
-    color: var(--text-light);
-    font-size: 14px;
-  }
-
-  /* Registered list */
+  .closed-overlay .icon { font-size: 40px; margin-bottom: 8px; }
+  .closed-overlay h2 { color: var(--red); font-size: 18px; margin-bottom: 4px; }
+  .closed-overlay p { color: var(--text-light); font-size: 14px; }
   .registered-list {
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 20px;
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px;
   }
-
-  .registered-list h3 {
-    font-size: 15px;
-    color: var(--green-dark);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .reg-item {
-    display: flex;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 14px;
-  }
-
+  .registered-list h3 { font-size: 15px; color: var(--green-dark); margin-bottom: 12px; }
+  .reg-item { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
   .reg-item:last-child { border-bottom: none; }
-
   .reg-num {
-    width: 28px;
-    height: 28px;
-    background: var(--green-light);
-    color: var(--green-dark);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 600;
-    margin-right: 10px;
-    flex-shrink: 0;
+    width: 28px; height: 28px; background: var(--green-light); color: var(--green-dark);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; margin-right: 10px; flex-shrink: 0;
   }
-
-  .reg-name { color: var(--text); }
-
-  .note {
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-light);
-    margin-top: 8px;
-  }
-
-  .note em { color: var(--red); }
-
-  /* Loading spinner */
+  .note { text-align: center; font-size: 12px; color: var(--text-light); margin-top: 8px; }
   .spinner {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    border: 2px solid var(--white);
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 0.6s linear infinite;
-    vertical-align: middle;
-    margin-right: 6px;
+    display: inline-block; width: 18px; height: 18px;
+    border: 2px solid var(--white); border-top-color: transparent;
+    border-radius: 50%; animation: spin 0.6s linear infinite;
+    vertical-align: middle; margin-right: 6px;
   }
-
   @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* Skeleton loading */
-  .skeleton {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    border-radius: 4px;
-  }
-
-  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 16px;
-    font-size: 12px;
-    color: var(--text-light);
-  }
-
-  /* Animation */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
+  .footer { text-align: center; padding: 16px; font-size: 12px; color: var(--text-light); }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   .fade-in { animation: fadeIn 0.4s ease; }
 </style>
 </head>
 <body>
-
 <div class="container">
-  <!-- Header -->
   <div class="header fade-in">
     <div class="badge">Big Cleaning ครั้งที่ 2</div>
     <h1>ลงทะเบียนเข้าร่วมกิจกรรม Big Cleaning</h1>
@@ -396,152 +140,71 @@
     </div>
   </div>
 
-  <!-- Dashboard -->
   <div class="dashboard fade-in">
-    <div class="stat-card">
-      <div class="stat-label">ลงทะเบียนแล้ว</div>
-      <div class="stat-number" id="countRegistered">-</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">เป้าหมาย</div>
-      <div class="stat-number" id="countTarget">37</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">คงเหลือ</div>
-      <div class="stat-number" id="countRemain">-</div>
-    </div>
+    <div class="stat-card"><div class="stat-label">ลงทะเบียนแล้ว</div><div class="stat-number" id="countRegistered">-</div></div>
+    <div class="stat-card"><div class="stat-label">เป้าหมาย</div><div class="stat-number" id="countTarget">37</div></div>
+    <div class="stat-card"><div class="stat-label">คงเหลือ</div><div class="stat-number" id="countRemain">-</div></div>
   </div>
 
-  <!-- Progress bar -->
   <div class="progress-wrap fade-in">
-    <div class="progress-header">
-      <span>ความคืบหน้า</span>
-      <span id="progressPct">0%</span>
-    </div>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
+    <div class="progress-header"><span>ความคืบหน้า</span><span id="progressPct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
   </div>
 
-  <!-- Closed overlay -->
   <div class="closed-overlay" id="closedOverlay">
     <div class="icon">🎉</div>
     <h2>ปิดรับลงทะเบียนแล้ว</h2>
     <p>จำนวนผู้เข้าร่วมกิจกรรมครบตามเป้าหมายแล้ว<br>ขอบคุณทุกท่านที่ลงทะเบียน</p>
   </div>
 
-  <!-- Form -->
   <div class="form-card fade-in" id="formCard">
     <div class="form-group">
       <label for="nameSelect">เลือกชื่อ-นามสกุลของท่าน</label>
-      <select id="nameSelect">
-        <option value="">-- กรุณาเลือกชื่อของท่าน --</option>
-      </select>
+      <select id="nameSelect"><option value="">-- กรุณาเลือกชื่อของท่าน --</option></select>
     </div>
-
     <div class="form-group">
       <label for="phoneInput">เบอร์โทรศัพท์</label>
       <input type="tel" id="phoneInput" placeholder="กรอกเบอร์โทรศัพท์" inputmode="tel">
     </div>
-
-    <button class="btn-submit" id="btnSubmit" onclick="submitRegistration()">
-      ยืนยันเข้าร่วมกิจกรรม
-    </button>
-
+    <button class="btn-submit" id="btnSubmit" onclick="submitRegistration()">ยืนยันเข้าร่วมกิจกรรม</button>
     <div class="msg" id="msgBox"></div>
-
     <p class="note">* กรุณาเลือกชื่อตัวเองเท่านั้น ชื่อที่เลือกแล้วจะถูกปิดอัตโนมัติ</p>
   </div>
 
-  <!-- Registered list -->
-  <div class="registered-list fade-in" id="registeredList">
+  <div class="registered-list fade-in">
     <h3>📋 รายชื่อผู้ลงทะเบียนแล้ว</h3>
-    <div id="regListBody">
-      <div class="skeleton" style="height:24px;margin-bottom:8px;"></div>
-      <div class="skeleton" style="height:24px;margin-bottom:8px;"></div>
-      <div class="skeleton" style="height:24px;"></div>
-    </div>
+    <div id="regListBody"><p style="color:#999;font-size:13px;text-align:center;">กำลังโหลด...</p></div>
   </div>
 
-  <div class="footer">
-    รพ.สต.ร่มโพธิ์ © 2568
-  </div>
+  <div class="footer">รพ.สต.ร่มโพธิ์ © 2568</div>
 </div>
 
 <script>
-// ==========================================
-// ⚠️ URL ของ Apps Script Web App
-// ==========================================
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzI6PcBJatvyJGzAjBja9vY3iPJCJo90dpTRGx2troLr2G4GGPVhctANNPQDUIxBST9/exec";
 
-// รายชื่อ อสม. ทั้งหมด 67 คน
 const ALL_NAMES = [
-  "นางกนกวรรณ กลุดนิ่ม",
-  "นางกมลชนก แกล้วเกษตรกรณ์",
-  "น.ส.กรรณิกา ดิลกวิทยรัตน์",
-  "นางกอบกุล จันทร์โรจน์",
-  "นางกานต์รวี สุขอารีย์",
-  "น.ส.ขันมะณี มุลเมือง",
-  "นางคนึง ไพรวรรณ์",
-  "นางจรรยา ปิ่นมังเล",
-  "นางจรัสศรี ไสโยธา",
-  "นางจิณห์นพสุขข์ บุญทอง",
-  "น.ส.จิต ดาน้อย",
-  "นางจิราภรณ์ ชัยชนะ",
-  "นางจุฑารัตน์ จอดสันเทียะ",
-  "นางแฉล้ม ปลื้มใจ",
-  "นางชวนชม จินเจา",
-  "นางดวงสมร หากระวี",
-  "นางทองชิต ฟักแฟง",
-  "นางทองเสี่ยน แก้วสด",
-  "นางทัศนีย์ รัตนะ",
-  "นายธงชัย รอดเพชรไทย",
-  "นางนพรัตน์ วงษ์พันธ์",
-  "น.ส.นภัสกร พันเงิน",
-  "น.ส.นวลจันทร์ ประทุมวัน",
-  "นางนิตยา สุขอรุณ",
-  "นางบัวลอย กาวรรณ",
-  "นางบุญนาค ริยะปาน",
-  "นางปณิตา พลสุวรรณ์",
-  "นางประคอง จันทร์แจ่มศรี",
-  "น.ส.ปาฌัสม์ สีเทา",
-  "นางปาลิดา หีบแก้ว",
-  "นางพจนา คงขน",
-  "น.ส.พเยาว์ เจริญสุข",
-  "นางพรเพ็ญ ศิริคุณ",
-  "นางระนอง นนตรี",
-  "นางระเบียบ อ่อนบำรุง",
-  "นางรัตนา ไวว่อง",
-  "นางรุจาภา ด้วงพรม",
-  "นางละออง นวสุจินดา",
-  "น.ส.ละเอียด หวังดี",
-  "นางลำคลอง เกษร",
-  "น.ส.วรรณภา ยินดี",
-  "นางวลี ขวัญจิตร์",
-  "นางวันดี สุขปลั่ง",
-  "นางวันเพ็ญ พงษ์ประยูร",
-  "น.ส.วารุณี พิมพ์เสน",
-  "น.ส.วิมล งามขำ",
-  "นายวิรัช รัตนะ",
-  "นางแววตา ทองปลิว",
-  "นางศรีสมุทร รอดไผ่",
-  "นางสมคิด อ่อนพันธ์",
-  "นางสมจิตต์ โชคศิริรัตนศิลป์",
-  "นางสมพงษ์ โชคศิริรัตนศิลป์",
-  "น.ส.สมพิศ ศิริกุล",
-  "นางสุชัญญา กวนคำอุ้ย",
-  "น.ส.สุชาดา อมฤก",
-  "นางสุทิน ไตรยสาคร",
-  "นางสุนภา ไสยสมบัติ",
-  "น.ส.สุปราณี ไทยปราณีต",
-  "นางสุพรรณี รัตนกุสุมภ์",
-  "นางสุภาพร คำดี",
-  "นายสุรพล เพ็ชรรัตน์",
-  "นางอนงค์ ยางกลั่น",
-  "นางอนุสรณ์ ใช้ลิ้ม",
-  "นางอรพิน สิงห์จันทร์",
-  "นางอารีลักษณ์ ปลื้มอุดม",
-  "อำพรรณ์ ตาใส",
+  "นางกนกวรรณ กลุดนิ่ม","นางกมลชนก แกล้วเกษตรกรณ์","น.ส.กรรณิกา ดิลกวิทยรัตน์",
+  "นางกอบกุล จันทร์โรจน์","นางกานต์รวี สุขอารีย์","น.ส.ขันมะณี มุลเมือง",
+  "นางคนึง ไพรวรรณ์","นางจรรยา ปิ่นมังเล","นางจรัสศรี ไสโยธา",
+  "นางจิณห์นพสุขข์ บุญทอง","น.ส.จิต ดาน้อย","นางจิราภรณ์ ชัยชนะ",
+  "นางจุฑารัตน์ จอดสันเทียะ","นางแฉล้ม ปลื้มใจ","นางชวนชม จินเจา",
+  "นางดวงสมร หากระวี","นางทองชิต ฟักแฟง","นางทองเสี่ยน แก้วสด",
+  "นางทัศนีย์ รัตนะ","นายธงชัย รอดเพชรไทย","นางนพรัตน์ วงษ์พันธ์",
+  "น.ส.นภัสกร พันเงิน","น.ส.นวลจันทร์ ประทุมวัน","นางนิตยา สุขอรุณ",
+  "นางบัวลอย กาวรรณ","นางบุญนาค ริยะปาน","นางปณิตา พลสุวรรณ์",
+  "นางประคอง จันทร์แจ่มศรี","น.ส.ปาฌัสม์ สีเทา","นางปาลิดา หีบแก้ว",
+  "นางพจนา คงขน","น.ส.พเยาว์ เจริญสุข","นางพรเพ็ญ ศิริคุณ",
+  "นางระนอง นนตรี","นางระเบียบ อ่อนบำรุง","นางรัตนา ไวว่อง",
+  "นางรุจาภา ด้วงพรม","นางละออง นวสุจินดา","น.ส.ละเอียด หวังดี",
+  "นางลำคลอง เกษร","น.ส.วรรณภา ยินดี","นางวลี ขวัญจิตร์",
+  "นางวันดี สุขปลั่ง","นางวันเพ็ญ พงษ์ประยูร","น.ส.วารุณี พิมพ์เสน",
+  "น.ส.วิมล งามขำ","นายวิรัช รัตนะ","นางแววตา ทองปลิว",
+  "นางศรีสมุทร รอดไผ่","นางสมคิด อ่อนพันธ์","นางสมจิตต์ โชคศิริรัตนศิลป์",
+  "นางสมพงษ์ โชคศิริรัตนศิลป์","น.ส.สมพิศ ศิริกุล","นางสุชัญญา กวนคำอุ้ย",
+  "น.ส.สุชาดา อมฤก","นางสุทิน ไตรยสาคร","นางสุนภา ไสยสมบัติ",
+  "น.ส.สุปราณี ไทยปราณีต","นางสุพรรณี รัตนกุสุมภ์","นางสุภาพร คำดี",
+  "นายสุรพล เพ็ชรรัตน์","นางอนงค์ ยางกลั่น","นางอนุสรณ์ ใช้ลิ้ม",
+  "นางอรพิน สิงห์จันทร์","นางอารีลักษณ์ ปลื้มอุดม","อำพรรณ์ ตาใส",
   "นางอุไรวรรณ ชุ่มใจ"
 ];
 
@@ -550,64 +213,65 @@ let registeredNames = [];
 let isLoading = false;
 
 // ==========================================
-// Helper: call Apps Script via JSONP (bypasses CORS completely)
+// API via postMessage from Apps Script iframe
 // ==========================================
-function callAppsScript(params) {
-  return new Promise((resolve, reject) => {
-    const cbName = 'jsonp_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
-    const timeout = setTimeout(() => {
-      cleanup();
-      reject(new Error('Timeout'));
-    }, 15000);
+let pendingResolve = null;
+let pendingReject = null;
+let pendingTimeout = null;
 
-    function cleanup() {
-      clearTimeout(timeout);
-      delete window[cbName];
-      const el = document.getElementById(cbName);
-      if (el) el.remove();
+window.addEventListener('message', function(event) {
+  if (!pendingResolve) return;
+  try {
+    const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+    if (data && typeof data.success !== 'undefined') {
+      clearTimeout(pendingTimeout);
+      pendingResolve(data);
+      pendingResolve = null;
+      pendingReject = null;
     }
+  } catch (e) { /* ignore non-JSON messages */ }
+});
 
-    window[cbName] = function(data) {
-      cleanup();
-      resolve(data);
-    };
+function callAPI(params) {
+  return new Promise((resolve, reject) => {
+    pendingResolve = resolve;
+    pendingReject = reject;
+
+    pendingTimeout = setTimeout(() => {
+      pendingResolve = null;
+      pendingReject = null;
+      reject(new Error('Timeout'));
+    }, 20000);
 
     const query = new URLSearchParams(params).toString();
-    const script = document.createElement('script');
-    script.id = cbName;
-    script.src = `${APPS_SCRIPT_URL}?${query}&callback=${cbName}`;
-    script.onerror = function() {
-      cleanup();
-      reject(new Error('Network error'));
-    };
-    document.head.appendChild(script);
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = `${APPS_SCRIPT_URL}?${query}&output=html`;
+    document.body.appendChild(iframe);
+
+    // Clean up iframe after response or timeout
+    setTimeout(() => { try { document.body.removeChild(iframe); } catch(e){} }, 25000);
   });
 }
 
 // ==========================================
-// Initialize
+// Init
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Show dropdown immediately (offline-first)
   updateDashboard(0, TARGET);
   updateDropdown();
-  // Then load actual data
   loadRegisteredData();
 });
 
 async function loadRegisteredData() {
   try {
-    const data = await callAppsScript({ action: 'getRegistered' });
-
+    const data = await callAPI({ action: 'getRegistered' });
     if (data.success) {
       registeredNames = data.registered || [];
       updateDashboard(data.count, data.target);
       updateDropdown();
       updateRegisteredList();
-
-      if (data.isFull) {
-        showClosed();
-      }
+      if (data.isFull) showClosed();
     }
   } catch (err) {
     console.error("Load error:", err);
@@ -619,7 +283,6 @@ async function loadRegisteredData() {
 function updateDashboard(count, target) {
   const remain = Math.max(0, target - count);
   const pct = Math.min(100, Math.round((count / target) * 100));
-
   document.getElementById('countRegistered').textContent = count;
   document.getElementById('countTarget').textContent = target;
   document.getElementById('countRemain').textContent = remain;
@@ -630,39 +293,23 @@ function updateDashboard(count, target) {
 function updateDropdown() {
   const select = document.getElementById('nameSelect');
   const currentValue = select.value;
-
-  // Clear existing options (keep first placeholder)
-  while (select.options.length > 1) {
-    select.remove(1);
-  }
-
-  const available = ALL_NAMES.filter(n => !registeredNames.includes(n));
-  available.forEach(name => {
+  while (select.options.length > 1) select.remove(1);
+  ALL_NAMES.filter(n => !registeredNames.includes(n)).forEach(name => {
     const opt = document.createElement('option');
-    opt.value = name;
-    opt.textContent = name;
+    opt.value = name; opt.textContent = name;
     select.appendChild(opt);
   });
-
-  // Restore selection if still available
-  if (currentValue && available.includes(currentValue)) {
-    select.value = currentValue;
-  }
+  if (currentValue && !registeredNames.includes(currentValue)) select.value = currentValue;
 }
 
 function updateRegisteredList() {
   const body = document.getElementById('regListBody');
-
   if (registeredNames.length === 0) {
     body.innerHTML = '<p style="color:#999;font-size:13px;text-align:center;">ยังไม่มีผู้ลงทะเบียน</p>';
     return;
   }
-
   body.innerHTML = registeredNames.map((name, i) =>
-    `<div class="reg-item fade-in">
-      <div class="reg-num">${i + 1}</div>
-      <div class="reg-name">${name}</div>
-    </div>`
+    `<div class="reg-item fade-in"><div class="reg-num">${i+1}</div><div>${name}</div></div>`
   ).join('');
 }
 
@@ -679,46 +326,26 @@ function showMsg(type, text) {
   setTimeout(() => { box.style.display = 'none'; }, 5000);
 }
 
-// ==========================================
-// Submit
-// ==========================================
 async function submitRegistration() {
   if (isLoading) return;
-
   const name = document.getElementById('nameSelect').value;
   const phone = document.getElementById('phoneInput').value.trim();
-
-  if (!name) {
-    showMsg('warn', 'กรุณาเลือกชื่อของท่านก่อน');
-    return;
-  }
+  if (!name) { showMsg('warn', 'กรุณาเลือกชื่อของท่านก่อน'); return; }
 
   const btn = document.getElementById('btnSubmit');
-  isLoading = true;
-  btn.disabled = true;
+  isLoading = true; btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> กำลังบันทึก...';
 
   try {
-    const data = await callAppsScript({
-      action: 'register',
-      name: name,
-      phone: phone || '-'
-    });
-
+    const data = await callAPI({ action: 'register', name, phone: phone || '-' });
     if (data.success) {
       showMsg('success', '✅ ' + data.message);
       registeredNames.push(name);
       updateDashboard(data.count, data.target);
-      updateDropdown();
-      updateRegisteredList();
-
-      // Reset form
+      updateDropdown(); updateRegisteredList();
       document.getElementById('nameSelect').value = '';
       document.getElementById('phoneInput').value = '';
-
-      if (data.isFull) {
-        setTimeout(() => showClosed(), 1500);
-      }
+      if (data.isFull) setTimeout(() => showClosed(), 1500);
     } else {
       showMsg('error', '❌ ' + data.message);
     }
@@ -726,12 +353,10 @@ async function submitRegistration() {
     console.error("Submit error:", err);
     showMsg('error', '❌ เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
   } finally {
-    isLoading = false;
-    btn.disabled = false;
+    isLoading = false; btn.disabled = false;
     btn.innerHTML = 'ยืนยันเข้าร่วมกิจกรรม';
   }
 }
 </script>
-
 </body>
 </html>
