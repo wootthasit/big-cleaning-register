@@ -470,7 +470,7 @@
 
 <script>
 // ==========================================
-// ⚠️ แก้ไข URL นี้ หลัง Deploy Apps Script
+// ⚠️ URL ของ Apps Script Web App
 // ==========================================
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzI6PcBJatvyJGzAjBja9vY3iPJCJo90dpTRGx2troLr2G4GGPVhctANNPQDUIxBST9/exec";
 
@@ -550,17 +550,56 @@ let registeredNames = [];
 let isLoading = false;
 
 // ==========================================
+// Helper: call Apps Script via fetch + redirect follow
+// ==========================================
+function callAppsScript(params) {
+  return new Promise((resolve, reject) => {
+    const query = new URLSearchParams(params).toString();
+    const url = `${APPS_SCRIPT_URL}?${query}`;
+
+    fetch(url, { redirect: 'follow' })
+      .then(res => {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(resolve)
+      .catch(err => {
+        // Fallback: use JSONP via script tag
+        const cbName = 'cb_' + Date.now();
+        const script = document.createElement('script');
+
+        window[cbName] = function(data) {
+          resolve(data);
+          delete window[cbName];
+          document.head.removeChild(script);
+        };
+
+        script.onerror = function() {
+          reject(new Error('Network error'));
+          delete window[cbName];
+          document.head.removeChild(script);
+        };
+
+        script.src = `${APPS_SCRIPT_URL}?${query}&callback=${cbName}`;
+        document.head.appendChild(script);
+      });
+  });
+}
+
+// ==========================================
 // Initialize
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
+  // Show dropdown immediately (offline-first)
+  updateDashboard(0, TARGET);
+  updateDropdown();
+  // Then load actual data
   loadRegisteredData();
 });
 
 async function loadRegisteredData() {
   try {
-    const url = `${APPS_SCRIPT_URL}?action=getRegistered`;
-    const res = await fetch(url);
-    const data = await res.json();
+    const data = await callAppsScript({ action: 'getRegistered' });
 
     if (data.success) {
       registeredNames = data.registered || [];
@@ -574,9 +613,6 @@ async function loadRegisteredData() {
     }
   } catch (err) {
     console.error("Load error:", err);
-    // Fallback: show form anyway
-    updateDashboard(0, TARGET);
-    updateDropdown();
     document.getElementById('regListBody').innerHTML =
       '<p style="color:#999;font-size:13px;text-align:center;">ไม่สามารถโหลดข้อมูลได้ กรุณารีเฟรชหน้า</p>';
   }
@@ -665,9 +701,11 @@ async function submitRegistration() {
   btn.innerHTML = '<span class="spinner"></span> กำลังบันทึก...';
 
   try {
-    const url = `${APPS_SCRIPT_URL}?action=register&name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone || '-')}`;
-    const res = await fetch(url);
-    const data = await res.json();
+    const data = await callAppsScript({
+      action: 'register',
+      name: name,
+      phone: phone || '-'
+    });
 
     if (data.success) {
       showMsg('success', '✅ ' + data.message);
